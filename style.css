@@ -1,0 +1,42 @@
+* {
+  margin: 0;
+  padding: 0;
+}
+
+body {
+  background-color: rgb(255, 200, 99);
+  min-height: 100px;
+}
+
+header {
+  font-family: "Poppins", sans-serif;
+  color: white;
+  padding: 20px;
+  display: flex;
+  margin-top: 250px;
+  font-size: 55px;
+  justify-content: center;
+}
+
+.buttons {
+  display: flex;
+  justify-content: center;
+}
+
+.buttons button {
+  border-radius: 75px;
+  font-size: 20px;
+  padding: 10px;
+  margin: 3px;
+  border: solid;
+  border-color: white;
+  background-color: rgb(255, 200, 99);
+  color: white;
+  transition-duration: 0.3s;
+}
+
+.buttons button:hover {
+  background-color: white;
+  color: rgb(255, 200, 99);
+}
+
