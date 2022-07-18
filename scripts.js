@@ -13,6 +13,8 @@ function highlight(element, name, clicked) {
 let foodString = [];
 
 //buttons
+
+//for bananas
 let bananas = document.getElementById("bananas");
 let bananaName = "bananaClicked";
 var bananaClicked = false;
@@ -30,16 +32,72 @@ bananas.onclick = () => {
   }
 };
 
+//for beans
 let beans = document.getElementById("beans");
 let beansName = "beansClicked";
 var beansClicked = false;
 beans.onclick = () => {
   highlight(beans, beansName, beansClicked);
   if (beansClicked === true) {
-    foodString.push("beans");
+    foodString.push("canned beans");
     sendApiRequest(foodString);
   } else {
-    const index = foodString.indexOf("beans");
+    const index = foodString.indexOf("canned beans");
+    if (index > -1) {
+      foodString.splice(index, 1);
+    }
+    
+    sendApiRequest(foodString);
+  }
+};
+
+//for bread
+let bread = document.getElementById("bread");
+let breadName = "breadClicked";
+var breadClicked = false;
+bread.onclick = () => {
+  highlight(bread, breadName, breadClicked);
+  if (breadClicked === true) {
+    foodString.push("bread");
+    sendApiRequest(foodString);
+  } else {
+    const index = foodString.indexOf("bread");
+    if (index > -1) {
+      foodString.splice(index, 1);
+    }
+    sendApiRequest(foodString);
+  }
+};
+
+//for eggs
+let eggs = document.getElementById("eggs");
+let eggsName = "eggsClicked";
+var eggsClicked = false;
+eggs.onclick = () => {
+  highlight(eggs, eggsName, eggsClicked);
+  if (eggsClicked === true) {
+    foodString.push("eggs");
+    sendApiRequest(foodString);
+  } else {
+    const index = foodString.indexOf("eggs");
+    if (index > -1) {
+      foodString.splice(index, 1);
+    }
+    sendApiRequest(foodString);
+  }
+};
+
+//for peanutbutter
+let peanutbutter = document.getElementById("peanut");
+let peanutbutterName = "peanutbutterClicked";
+var peanutbutterClicked = false;
+peanutbutter.onclick = () => {
+  highlight(peanutbutter, peanutbutterName, peanutbutterClicked);
+  if (peanutbutterClicked === true) {
+    foodString.push("peanutbutter");
+    sendApiRequest(foodString);
+  } else {
+    const index = foodString.indexOf("peanutbutter");
     if (index > -1) {
       foodString.splice(index, 1);
     }
