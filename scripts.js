@@ -139,21 +139,44 @@ async function sendApiRequest(food) {
 
 //replace content div in HTML with API results
 function useApiData(data) {
+  let container = []
+  for(let i=0; i < data.hits.length; i++){
+    container.push((data.hits[i].recipe.ingredients).length);
+  }
+  let min = Math.min.apply(Math, container);
+  let first = container.indexOf(min);
+  container.splice(first,1)
+  let secmin = Math.min.apply(Math,container)
+  let second = container.indexOf(secmin)
+  container.splice(second,1)
+  let thirdmin = Math.min.apply(Math,container)
+  let third = container.indexOf(thirdmin)
+
+
+
   document.querySelector("#content").innerHTML = `
     <div class="card" style="width: 18rem;">
-    <img src="${data.hits[0].recipe.image}" class="card-img-top" alt="...">
+    <img src="${data.hits[first].recipe.image}" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">${data.hits[0].recipe.label}</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <h5 class="card-title">${data.hits[first].recipe.label}</h5>
+      <p class="card-text">Calories: ${data.hits[first].recipe.calories} Main Ingredients: ${data.hits[first].recipe.ingredientLines.slice(0,3)}</p>
+      <a href="${data.hits[first].recipe.url}" target="_blank" class="btn btn-primary">Recipe</a>
     </div>
   </div>
   <div class="card" style="width: 18rem;">
-    <img src="${data.hits[1].recipe.image}" class="card-img-top" alt="...">
+    <img src="${data.hits[second].recipe.image}" class="card-img-top" alt="...">
     <div class="card-body">
-      <h5 class="card-title">${data.hits[1].recipe.label}</h5>
-      <p class="card-text">Some quick example text to build on the card title and make up the bulk of the card's content.</p>
-      <a href="#" class="btn btn-primary">Go somewhere</a>
+      <h5 class="card-title">${data.hits[second].recipe.label}</h5>
+      <p class="card-text">Calories: ${data.hits[second].recipe.calories} Main Ingredients: ${data.hits[second].recipe.ingredientLines.slice(0,3)}</p>
+      <a href="${data.hits[second].recipe.url}" target="_blank" class="btn btn-primary">Recipe</a>
+    </div>
+  </div>
+  <div class="card" style="width: 18rem;">
+    <img src="${data.hits[third].recipe.image}" class="card-img-top" alt="...">
+    <div class="card-body">
+      <h5 class="card-title">${data.hits[third].recipe.label}</h5>
+      <p class="card-text">Calories: ${data.hits[third].recipe.calories} Main Ingredients: ${data.hits[third].recipe.ingredientLines.slice(0,3)}</p>
+      <a href="${data.hits[third].recipe.url}" target="_blank" class="btn btn-primary">Recipe</a>
     </div>
   </div>
   <p></p>
